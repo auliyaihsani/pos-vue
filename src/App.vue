@@ -1,29 +1,105 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+      <div id="app">
+            <v-app>
+      <v-card>
+      <v-navigation-drawer v-model="drawer" app fixed>
+          <v-list-item >
+            <v-list-item-content color="success">
+              <v-list-item-title class="title">
+             
+               <v-avatar size="25">
+                <img src="@/assets/logo.png" alt="avatar">
+              </v-avatar>
+              <router-link to="/" tag="span" style="cursor:pointer"> &nbsp; POS-APP</router-link>
+              </v-list-item-title>
+              <!-- <v-list-item-subtitle>
+                subtext
+              </v-list-item-subtitle> -->
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-divider></v-divider>
+
+          <v-list
+            dense
+            nav
+          >
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              :to="item.link"
+             
+            >
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </v-card>
+
+ 
+      <v-app-bar app fixed >
+      <v-app-bar-nav-icon @click.stop="drawer=!drawer" ></v-app-bar-nav-icon>
+        
+      <v-toolbar-title v-show="!drawer" class="title">
+       <v-avatar size="25">
+      <img src="@/assets/logo.png" alt="avatar">
+      </v-avatar>
+      <router-link to="/" tag="span" style="cursor:pointer"> &nbsp; SANI-POS</router-link>
+      </v-toolbar-title>
+
+     
+     
+    </v-app-bar>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout>
+          <router-view></router-view>
+        </v-layout>
+      </v-container>
+    </v-content>
+
+     <v-footer
+      
+      class="font-weight-medium"
+  
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        {{ new Date().getFullYear() }} — <strong>Mohammad Auliya Ihsani</strong>
+      </v-col>
+    </v-footer>
+     </v-app>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+  export default {
+   name: 'App',
+   data:()=>({
+     drawer: false,
+     
+     items: [
+          { title: 'Home',        icon: 'mdi-home', link: '/'},
+          { title: 'Categories',  icon: 'mdi-view-dashboard', link: '/categories' },
+          { title: 'Customers',   icon: 'mdi-view-dashboard', link: '/customers'},
+          { title: 'Supliers',    icon: 'mdi-view-dashboard', link: '/supliers'},
+          { title: 'Products',    icon: 'mdi-view-dashboard', link: '/products'},
+          { title: 'About',       icon: 'mdi-account', link:'about' },
+        ],
+   })
   }
-}
+
+</script>
+
+<style>
+
 </style>
+
