@@ -4,6 +4,8 @@ import Customers from './stores/Customers'
 import Supliers from  './stores/Supliers'
 import Categories from  './stores/Categories'
 import Products from './stores/Products'
+import Orders from './stores/Orders'
+
 
 Vue.use(Vuex)
 
@@ -12,6 +14,8 @@ modules:{
     Customers,
     Supliers,
     Categories,
-    Products
+    Products,
+    Orders,
+
     }
 })

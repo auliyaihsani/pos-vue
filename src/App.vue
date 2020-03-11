@@ -92,7 +92,10 @@
           { title: 'Customers',   icon: 'mdi-view-dashboard', link: '/customers'},
           { title: 'Supliers',    icon: 'mdi-view-dashboard', link: '/supliers'},
           { title: 'Products',    icon: 'mdi-view-dashboard', link: '/products'},
-          { title: 'About',       icon: 'mdi-account', link:'about' },
+          { title: 'purchase Item',    icon: 'mdi-view-dashboard', link: '/purchase'},
+          { title: 'orders',    icon: 'mdi-view-dashboard', link: '/orders/create'},
+          { title: 'users',    icon: 'mdi-view-dashboard', link: '/users'},
+          { title: 'About',       icon: 'mdi-account', link:'about' }
         ],
    })
   }

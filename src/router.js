@@ -6,12 +6,14 @@ import Customers from './views/Customers.vue'
 import Supliers from './views/Supliers.vue'
 import Categories from './views/Categories.vue'
 import Products from './views/Products.vue'
+import Orders from './views/Orders.vue'
 
 
 import CreateUpdateCustomers from './components/customers/CreateUpdateCustomers'
 import CreateUpdateSupliers from './components/supliers/CreateUpdateSupliers'
 import CreateUpdateCategories from './components/categories/CreateUpdateCategories'
 import CreateUpdateProducts from './components/products/CreateUpdateProducts'
+import CreateUpdateOrders from './components/orders/CreateUpdateOrders'
 // import EditCustomer from './components/customers/EditCustomer'
 
 
@@ -86,11 +88,29 @@ export default new Router({
     {
       path: '/product/detail',
       name: 'updateproducts',
-      component: CreateUpdateCategories,
+      component: CreateUpdateProducts,
       props: true
     },
 
    
+    
+    {
+      path: '/orders',
+      name: 'orders',
+      component: Orders
+    },
+    {
+      path: '/orders/create',
+      name: 'CreateOrders',
+      component: CreateUpdateOrders
+    },
+    {
+      path: '/order/detail',
+      name: 'updateorders',
+      component: CreateUpdateOrders,
+      props: true
+    },
+
    
    
     {

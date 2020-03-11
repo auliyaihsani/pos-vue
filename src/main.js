@@ -7,7 +7,7 @@ import 'vue-material-design-icons/styles.css';
 import { ValidationProvider } from 'vee-validate/dist/vee-validate.full';
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.config.productionTip = false
-
+console.log(process.env.VUE_APP_TITILE);
 new Vue({
   router,
   store,

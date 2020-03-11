@@ -15,12 +15,13 @@ import Vuetify ,  {
   VAvatar,
   //  transitions,
   VTextarea,
- // VJumbotron,
+//  VJumbotron,
   VAlert,
   VSelect,
   VForm,
   VDialog,
-  VResponsive
+  VResponsive,
+  VFlex
 } from 'vuetify/lib';
 import 'vuetify/src/styles/main.sass';
 
@@ -33,21 +34,22 @@ Vue.use(Vuetify, {
     VList,
     VBtn,
     VIcon,
-    //VGrid,
+    // VGrid,
     VToolbar,
     VDivider,
     VCard,
     VDataTable,
     VTextField,
     VAvatar,
-    //transitions,
+    // transitions,
     VTextarea,
-    //VJumbotron,
+    // VJumbotron,
     VAlert,
     VSelect,
     VForm,
     VDialog,
-    VResponsive
+    VResponsive,
+    VFlex
   }
 });
 

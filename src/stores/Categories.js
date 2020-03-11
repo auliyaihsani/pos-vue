@@ -32,15 +32,12 @@ export default {
             headers: { 
               "Content-Type": "application/x-www-form-urlencoded"
             }
-          }).then((categories) => {
-            
+          }).then(categories => {
+            console.log(categories);
             alert(categories.data.message)
             router.push({name:'categories'})
             commit('CREATE_CATEGORIES', categories.data) 
-          }).catch((err) => {
-                  alert('Erroru'+err)
-      
-        });
+          }).catch(err => alert('Error'+ err));
     },
     UpdateCategories({ commit }, payload){
       axios.put('http://localhost/superposapi/api/categories/update.php',
@@ -82,7 +79,7 @@ export default {
           //hapus 1 element dimulai pada nilai index
           // const index = state.customers.indexOf(id)
           // state.customers.splice(index, 1)
-          const index = state.categories.findIndex(category => category.idscategories === id)
+          const index = state.categories.findIndex(category => category.idcategories === id)
           state.categories.splice(index, 1)
         }
        
