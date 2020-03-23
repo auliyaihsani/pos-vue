@@ -7,6 +7,8 @@ import Supliers from './views/Supliers.vue'
 import Categories from './views/Categories.vue'
 import Products from './views/Products.vue'
 import Orders from './views/Orders.vue'
+import Purchases from './views/Purchases.vue'
+import Users from './views/Users.vue'
 
 
 import CreateUpdateCustomers from './components/customers/CreateUpdateCustomers'
@@ -14,6 +16,8 @@ import CreateUpdateSupliers from './components/supliers/CreateUpdateSupliers'
 import CreateUpdateCategories from './components/categories/CreateUpdateCategories'
 import CreateUpdateProducts from './components/products/CreateUpdateProducts'
 import CreateUpdateOrders from './components/orders/CreateUpdateOrders'
+import CreateUpdatePurchases from './components/purchases/CreateUpdatePurchases'
+import CreateUpdateUsers from './components/users/CreateUpdateUsers'
 // import EditCustomer from './components/customers/EditCustomer'
 
 
@@ -111,8 +115,47 @@ export default new Router({
       props: true
     },
 
+    {
+      path: '/purchases',
+      name: 'Purchases',
+      component:Purchases
+    },
+
+    {
+      path: '/purchases/create',
+      name: 'CreatePurchases',
+      component:CreateUpdatePurchases
+    },
+
+    {
+      path: '/purchases/detail',
+      name: 'UpdatePurchases',
+      component:CreateUpdatePurchases,
+      props: true
+    },
+
+
+    {
+      path: '/users',
+      name: 'users',
+      component:Users
+    },
+
+    {
+      path: '/users/create',
+      name: 'CreateUsers',
+      component:CreateUpdateUsers
+    },
+
+    {
+      path: '/users/detail',
+      name: 'UpdateUsers',
+      component:CreateUpdateUsers,
+      props:true
+    },
+
    
-   
+
     {
       path: '/',
       name: 'home',

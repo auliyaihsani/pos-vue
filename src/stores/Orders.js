@@ -38,6 +38,8 @@ export default  {
         .then((checkout) => {
           commit('DONE_CHECKOUT', checkout.data)
           dispatch('fetchproducts', null, { root: true })
+
+          
         })
         .catch((error) => {
           console.log(error)
@@ -46,7 +48,7 @@ export default  {
     addOrderToCart ({ rootGetters, state, commit }, orders) {
       let cartOrder = state.orders.find(order => order.idproducts === orders.idproducts)
       if (!cartOrder) {
-        const data = rootGetters['getProductsById'](orders.idproducts)
+        const data = rootGetters('products/getproducsById'(orders.idproducts));
         const DataOrder = {
           idproducts: data.idproducts,
           nama: data.nama,
@@ -54,7 +56,9 @@ export default  {
           qty: orders.qty,
           stok: data.stok
         }
-        commit('ADD_ORDER', DataOrder)
+        console.log(data);
+        commit('ADD_ORDER', DataOrder )
+        
       } else {
         cartOrder.qty = parseInt(cartOrder.qty) + parseInt(orders.qty)
         commit('UPDATE_QTY', cartOrder)

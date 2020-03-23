@@ -8,9 +8,9 @@
           <v-form data-vv-scope='form-1'>
           <v-select :items="products" item-text="nama" item-value="idproducts"
             v-model="orders.idproducts" label="Products"
-            data-vv-name="idproducts" autocomplete></v-select>
+            data-vv-name="idproducts" autocomplete ></v-select>
           <v-text-field  v-model="orders.qty"  label="Qty" data-vv-name="qty" type="number"></v-text-field>
-          <v-btn type="button" @click.prevent="AddOrder">add order</v-btn>
+          <v-btn type="button">add order</v-btn>
           <v-btn @click="clear">clear</v-btn>
         </v-form>
 
@@ -120,8 +120,11 @@ export default {
     ]
   }),
   computed: {
+   
+
     products () {
       return this.$store.state.Products.products
+      
     },
     orderdetails () {
       return this.$store.state.Orders.orders
@@ -133,17 +136,18 @@ export default {
       return this.$store.state.Customers.customers
     }
   },
+  // created(){
+  //   this.AddOrder();
+  // },
+
   methods: {
       
-    AddOrder () {
-      this.then(res => {
-        if (res) {
-          this.$store.dispatch('addOrderToCart', this.orders)
-        } else {
-          console.log('Input data dengan benar')
-        }
-      })
-    },
+    // AddOrder () {
+    
+    //       this.$store.dispatch('addOrderToCart', this.orders)
+       
+      
+    // },
     SubmitCheckOut () {
       this.then(res => {
         if (res) {
