@@ -45,25 +45,25 @@ export default  {
           console.log(error)
         })
     },
-    addOrderToCart ({ rootGetters, state, commit }, orders) {
-      let cartOrder = state.orders.find(order => order.idproducts === orders.idproducts)
-      if (!cartOrder) {
-        const data = rootGetters('products/getproducsById'(orders.idproducts));
-        const DataOrder = {
-          idproducts: data.idproducts,
-          nama: data.nama,
-          harga: data.harga,
-          qty: orders.qty,
-          stok: data.stok
-        }
-        console.log(data);
-        commit('ADD_ORDER', DataOrder )
+    // addOrderToCart ({ rootGetters, state, commit }, orders) {
+    //   let cartOrder = state.orders.find(order => order.idproducts === orders.idproducts)
+    //   if (!cartOrder) {
+    //     const data = rootGetters('products/getproducsById'(orders.idproducts));
+    //     const DataOrder = {
+    //       idproducts: data.idproducts,
+    //       nama: data.nama,
+    //       harga: data.harga,
+    //       qty: orders.qty,
+    //       stok: data.stok
+    //     }
+    //     console.log(data);
+    //     commit('ADD_ORDER', DataOrder )
         
-      } else {
-        cartOrder.qty = parseInt(cartOrder.qty) + parseInt(orders.qty)
-        commit('UPDATE_QTY', cartOrder)
-      }
-    },
+    //   } else {
+    //     cartOrder.qty = parseInt(cartOrder.qty) + parseInt(orders.qty)
+    //     commit('UPDATE_QTY', cartOrder)
+    //   }
+    // },
     deleteOrder ({ commit }, id) {
       commit('DELETE_ORDER', id)
       // axios

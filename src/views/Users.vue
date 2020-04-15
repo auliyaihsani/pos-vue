@@ -10,11 +10,11 @@ export default {
   components: {
       ListUsers
   },
-//   created () {
-//      this.$store.dispatch('fetchsupliers')// DISPATCH loadCustomer YANG BERADA DALAM MODULE Customers
-//     // store.dispatch('')
-   
-//   }
+ created () {
+     this.$store.dispatch('loadUsers')// DISPATCH loadCustomer YANG BERADA DALAM MODULE Customers
+    // store.dispatch('')
+
+  }
   
 }
 

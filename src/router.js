@@ -9,6 +9,7 @@ import Products from './views/Products.vue'
 import Orders from './views/Orders.vue'
 import Purchases from './views/Purchases.vue'
 import Users from './views/Users.vue'
+import Login from './views/Login.vue'
 
 
 import CreateUpdateCustomers from './components/customers/CreateUpdateCustomers'
@@ -161,6 +162,12 @@ export default new Router({
       name: 'home',
       component: Home
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },  
+
     {
       path: '/about',
       name: 'about',

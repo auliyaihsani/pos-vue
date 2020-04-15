@@ -1,63 +1,55 @@
 <template>
-  <v-container>
-    <v-layout row wrap>
-      <v-flex xs12 sm5 md3>
-        <v-flex lg12 tag='h1' class='headline ma-1'>Users Page</v-flex>
-      </v-flex>
-      <v-flex xs12 sm5 md5 offset-xs0 offset-md2 offset-lg4 class="text-xs-right">
-          <v-btn color='info' :to="{name: 'CreateUsers'}">Tambah Users</v-btn>
-      </v-flex>
-      <v-flex xs12 sm6 md4 lg3   >
-        <v-card class="text-xs-center ma-2">
-          <v-responsive class="pt-4">
-            <v-avatar size="100" class="grey lighten-2">
-              <img >
-            </v-avatar>
-          </v-responsive>
+<v-flex xs12>
+  <v-card>
+      <v-card-title primary-title>
+    <span class="title" >Users Page</span>
+     <v-spacer></v-spacer>
+     <span>
+         <v-btn color="primary dark" :to="{name: 'CreateUsers'}">Add Userss </v-btn>
 
-          <v-card-text>
-            <div class="subheading">
+         
+     </span>
+      </v-card-title>
+      </v-card>
+    <v-divider>
+
+    </v-divider>
+    <v-card >
+
+    <v-card-title>
+            List Users
+            <v-spacer></v-spacer>
+            <v-text-field v-model="search" icon="fas fa-search" label="Search" single-line hide-details></v-text-field>
+          </v-card-title>
+           <v-row class="space">
+         <v-flex xs12 sm6 md4 lg3 v-for="user in users" :key="user.idusers">
+        <v-card  class=" ma-5">
+          <v-card-text class="text-center">
+           
+            <v-avatar size="120" class=" text-center grey lighten-2">
+            <!-- <img v-bind:src="`http://localhost/superposapi/upload/${user.foto}`" alt="avatar"> -->
+            </v-avatar>
        
+            <div class="subheading">
+              {{user.username}}
             </div>
             <div class="grey--text">
-         
+              {{user.role}}
             </div>
+
+            <v-card-actions class="d-inline-block">
+            <v-btn  color="error" >delete user</v-btn>
+          </v-card-actions>
           </v-card-text>
 
-          <v-card-actions class="d-inline-block">
-            <v-btn color="error">delete<v-icon 
-                
-                 >{{ icons.mdiDelete }}</v-icon></v-btn>
-          </v-card-actions>
+          
         </v-card>
+        
       </v-flex>
-
-       <v-flex xs12 sm6 md4 lg3  >
-        <v-card class="text-xs-center ma-2">
-          <v-responsive class="pt-4">
-            <v-avatar size="100" class="grey lighten-2">
-              <img class="container">
-            </v-avatar>
-          </v-responsive>
-
-          <v-card-text>
-            <div class="subheading">
-       
-            </div>
-            <div class="grey--text">
-         
-            </div>
-          </v-card-text>
-
-          <v-card-actions class="d-inline-block">
-            <v-btn color="error">delete<v-icon 
-                
-                 >{{ icons.mdiDelete }}</v-icon></v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+       </v-row>
+  </v-card>
+  </v-flex>
+ 
 </template>
 
 
@@ -85,64 +77,56 @@ export default {
             // value: 'idcustomers'
           },
           {
-            text: 'Id Products ',
-            value: 'idproducts'
+            text: 'Id Users ',
+            value: 'idusers'
           },
           {
-            text: 'Name',
-            value: 'nama'
-          },
-
-           {
-            text: 'Id Categories',
-            value: 'idcategories'
+            text: 'Username',
+            value: 'username'
           },
           {
-            text: 'Name Categories',
-            value: 'namacategories'
-          },
-
-          {
-            text: 'Price',
-            value: 'harga'
+            text: 'Password',
+            value: 'password'
           },
           {
-            text: 'Stock',
-            value: 'stok'
+            text: 'Role',
+            value: 'role'
           },
-          {
-            text: 'Action',
-            value: 'action'
-          }
+          // {
+          //   text: 'Username',
+          //   value: 'username'
+          // },
+        
         ]
       }     
     },
     computed: {
-      products() {
-         return this.$store.state.Products.products
+      users() {
+         return this.$store.state.Users.users
        }
     },
     mounted () {
-     this.$store.dispatch('fetchproducts')// DISPATCH loadCustomer YANG BERADA DALAM MODULE Customers
+     this.$store.dispatch('loadUsers')// DISPATCH loadCustomer YANG BERADA DALAM MODULE Customers
+      // DISPATCH loadCustomer YANG BERADA DALAM MODULE Customers
     // store.dispatch('')
    
   },
   methods:{
-   editProduct(item) {
-     this.$router.push({name: 'updateproducts',
-      params:{
-      idproducts: item.idproducts, 
-      nama: item.nama,   
-      idcategories: item.idcategories,
-      harga: item.harga,
-      stok: item.stok
+  //  editUsers(item) {
+  //    this.$router.push({name: 'UpdateUsers',
+  //     params:{
+  //     idusers: item.idusers, 
+  //     nama: item.username,   
+  //     password: item.password,
+  //     role: item.role,
+  //     foto: item.foto
 
-      }})
-   },
+  //     }})
+  //  },
 
-     deleteProduct(idproducts){
-        this.$store.dispatch('deleteProducts', idproducts)
-        alert('product deleted !!!')
+     deleteProduct(idusers){
+        this.$store.dispatch('deleteUsers', idusers)
+        alert('Users deleted !!!')
     }
   }
   

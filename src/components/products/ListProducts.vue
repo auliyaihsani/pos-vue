@@ -36,6 +36,7 @@
                 small @click="deleteProduct(item.idproducts)"
                 left color="error">{{ icons.mdiDelete }}</v-icon>
             </template>
+
             </v-data-table>
         
   </v-card>
@@ -92,10 +93,10 @@
             text: 'Stock',
             value: 'stok'
           },
-          {
-            text: 'Action',
-            value: 'action'
-          }
+          // {
+          //   text: 'Action',
+          //   // value: 'action'
+          // }
         ]
       }     
     },

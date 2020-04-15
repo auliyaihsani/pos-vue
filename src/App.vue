@@ -1,28 +1,29 @@
 <template>
       <div id="app">
             <v-app>
-      <v-card>
-      <v-navigation-drawer v-model="drawer" app fixed>
+      <v-card >
+      <v-navigation-drawer v-model="drawer" app fixed v-if="this.$route.path !=='/login'" >
           <v-list-item >
-            <v-list-item-content color="success">
-              <v-list-item-title class="title">
+          
+              <v-list-item-title class="title" >
              
-               <v-avatar size="25">
+               <v-avatar size="25" >
                 <img src="@/assets/logo.png" alt="avatar">
               </v-avatar>
               <router-link to="/" tag="span" style="cursor:pointer"> &nbsp; POS-APP</router-link>
               </v-list-item-title>
-              <!-- <v-list-item-subtitle>
-                subtext
-              </v-list-item-subtitle> -->
-            </v-list-item-content>
+              
+         
+
+            
           </v-list-item>
 
-          <v-divider></v-divider>
+          <!-- <v-divider></v-divider> -->
 
           <v-list
             dense
             nav
+            
           >
             <v-list-item
               v-for="item in items"
@@ -43,7 +44,9 @@
       </v-card>
 
  
-      <v-app-bar app fixed >
+      <v-app-bar app fixed  
+      color="primary"
+      dark v-if="this.$route.path !=='/login'">
       <v-app-bar-nav-icon @click.stop="drawer=!drawer" ></v-app-bar-nav-icon>
         
       <v-toolbar-title v-show="!drawer" class="title">
@@ -53,19 +56,23 @@
       <router-link to="/" tag="span" style="cursor:pointer"> &nbsp; SANI-POS</router-link>
       </v-toolbar-title>
 
-     
+   <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn dark color="primary" @click.prevent="logout">Logout</v-btn>
+        </v-toolbar-items>
+
      
     </v-app-bar>
-    <v-content>
+    <v-content >
       <v-container fluid fill-height>
-        <v-layout>
+        <v-layout >
           <router-view></router-view>
         </v-layout>
       </v-container>
     </v-content>
 
      <v-footer
-      
+      color="primary"
+      dark
       class="font-weight-medium"
   
     >
@@ -97,7 +104,22 @@
           { title: 'users',    icon: 'mdi-view-dashboard', link: '/users'},
           { title: 'About',       icon: 'mdi-account', link:'about' }
         ],
-   })
+         tags: [
+        'login',
+        
+      ],
+   }),
+
+   methods: {
+    logout: function (){
+      localStorage.clear()
+      this.$router.push({
+        name: 'login'
+      })
+    }
+  }
+
+
   }
 
 </script>
